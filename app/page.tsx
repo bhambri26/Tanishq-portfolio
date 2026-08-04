@@ -7,6 +7,7 @@ import About from '@/components/About'
 import TechStack from '@/components/TechStack'
 import ProjectGrid from '@/components/ProjectGrid'
 import Timeline from '@/components/Timeline'
+import Education from '@/components/Education'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       <TechStack />
       <ProjectGrid />
       <Timeline />
+      <Education />
       <Footer />
     </div>
   )

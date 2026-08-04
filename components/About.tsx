@@ -4,10 +4,10 @@ import { useEffect, useState, useRef } from 'react'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 
 const metrics = [
-  { value: '8', label: 'Years Experience' },
-  { value: '15', label: '% Forecast Accuracy Gain' },
-  { value: '60', label: '% Conversion Rate Increase' },
-  { value: '35', label: '% Production Forecasting Improvement' }
+  { value: '9', label: 'Years Experience' },
+  { value: '12', label: 'x Faster Operations Decisioning (12h→1h)' },
+  { value: '20', label: 'Hours Manual Reporting Saved / Cycle' },
+  { value: '60', label: '% Conversion Rate Increase' }
 ]
 
 function Counter({ targetValue, suffix = '' }: { targetValue: number, suffix?: string }) {
@@ -61,7 +61,7 @@ export default function About() {
           style={{ y: yRotated }}
           className="-rotate-90 whitespace-nowrap font-display text-6xl tracking-tighter text-border font-bold uppercase"
         >
-          8 YEARS. 2 COMPANIES. INFINITE DATA.
+          9 YEARS. HEXAWARE & INFOSYS. AI PRODUCT STRATEGY.
         </motion.div>
       </div>
 
@@ -71,27 +71,42 @@ export default function About() {
           style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]) }}
           className="md:hidden opacity-30 whitespace-nowrap font-display text-2xl tracking-tighter text-border uppercase"
         >
-          8 YEARS. 2 COMPANIES. INFINITE DATA.
+          9 YEARS. HEXAWARE & INFOSYS. AI PRODUCT STRATEGY.
         </motion.div>
 
         <div className="lg:col-span-7 col-span-1 space-y-8">
-          <motion.p 
-            className="text-xl md:text-3xl font-sans leading-relaxed text-foreground/90 font-light"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            Senior Data Analyst with 8 years of expertise in data analytics, modeling, and machine learning.
-          </motion.p>
+            <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-2">
+              Current Role & Strategic Horizon
+            </span>
+            <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground leading-tight">
+              Data Analytics & IoT Lead <span className="text-accent">@ Hexaware</span> → Aspiring <span className="text-accent">AI Product Manager / Owner</span>
+            </h3>
+          </motion.div>
+
           <motion.p 
-            className="text-lg md:text-xl font-sans leading-relaxed text-muted-foreground text-foreground/60"
+            className="text-lg md:text-xl font-sans leading-relaxed text-foreground/80 font-light"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            Certified Scrum Product Owner (<span className="text-accent font-semibold">CSPO®</span>) with 9 years of experience bridging deep data engineering, Palantir Foundry (AIP), and GenAI/LLM pipelines with enterprise AI product strategy.
+          </motion.p>
+          
+          <motion.p 
+            className="text-base md:text-lg font-sans leading-relaxed text-foreground/60"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Led a team of three analysts to upgrade an oil and gas production forecasting model using Palantir and machine learning, achieving a <span className="text-accent">15% accuracy gain</span>. Directed a customer segmentation initiative using PEGA CRM for multi-channel campaigns that increased conversion rates by <span className="text-accent">60%</span>.
+            At Hexaware Technologies & Infosys, I have led end-to-end ML lifecycles across 5 key phases, managed product backlogs in Azure DevOps, and personally defined acceptance criteria for Palantir Foundry AI platforms—cutting operations decision time from <span className="text-accent font-medium">12 hours to 1 hour</span> and shrinking a 5-person manual reporting workflow down to 1.
           </motion.p>
         </div>
 
@@ -99,6 +114,7 @@ export default function About() {
           {metrics.map((metric, i) => {
             const numValue = parseInt(metric.value)
             const isPercent = metric.label.includes('%')
+            const isX = metric.label.includes('x')
             
             return (
               <motion.div 
@@ -109,9 +125,9 @@ export default function About() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <Counter targetValue={numValue} suffix={isPercent ? '%' : ''} />
+                <Counter targetValue={numValue} suffix={isPercent ? '%' : isX ? 'x' : 'h'} />
                 <span className="font-mono text-sm text-foreground/50 uppercase tracking-widest leading-tight">
-                  {metric.label.replace('% ', '')}
+                  {metric.label.replace('% ', '').replace('x ', '')}
                 </span>
               </motion.div>
             )

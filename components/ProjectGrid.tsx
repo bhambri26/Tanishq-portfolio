@@ -5,31 +5,40 @@ import { ArrowUpRight } from 'lucide-react'
 
 const projects = [
   {
-    title: 'Oil & Gas Forecasting Model',
-    company: 'Infosys Limited (2021–Present)',
-    role: 'Senior Data Analyst / Technical Analyst',
-    description: 'Led team of 3 analysts to upgrade production forecasting model for oil, water, gas, and fuel wells using Palantir Foundry and machine learning. Achieved 15% accuracy improvement; pattern recognition across 4 well types improved accuracy to 35%.',
-    tags: ['Palantir', 'Python', 'ML', 'Oil & Gas', 'Pipeline'],
+    title: 'Palantir Foundry AI Platform & Backlog Strategy',
+    company: 'Hexaware Technologies & Infosys',
+    role: 'Data Analytics & IoT Lead / AI Product Owner',
+    description: 'Owned the product backlog and sprint planning in Azure DevOps for an enterprise Palantir Foundry AI platform. Defined user stories and acceptance criteria, reducing operations decision-making time from 12 hours to 1 hour, saving 20 hours/cycle of manual reporting, and preventing $10,000+ in production losses.',
+    tags: ['Palantir AIP', 'Product Backlog', 'Azure DevOps', 'CSPO', 'User Stories'],
+    metric: '12h → 1h decisioning',
+    span: 'col-span-1 lg:col-span-7',
+  },
+  {
+    title: 'Oil & Gas Upstream Forecasting & ML Pipelines',
+    company: 'Infosys Limited (2021–2026)',
+    role: 'Senior Data Analyst',
+    description: 'Led a team of 3 analysts to build and tune forecasting models in Palantir Foundry Code Repository (Python). Processed 1.1M+ rows of daily upstream production data across 4 well types (oil, gas, water, fuel), achieving a 15% accuracy improvement and 35% pattern recognition gain.',
+    tags: ['Palantir Foundry', 'Python', 'Machine Learning', 'Decline Curve Analysis', 'PySpark'],
     metric: '+15% accuracy',
-    span: 'col-span-1 lg:col-span-7', // varied spans for masonry feel
+    span: 'col-span-1 lg:col-span-5',
   },
   {
     title: 'PEGA CRM Multi-Channel Campaign Engine',
     company: 'Infosys Limited (2017–2020)',
     role: 'Senior System Engineer',
-    description: 'Directed a team of 3 to implement a data segmentation strategy using PEGA, analyzing market trends and customer behavior for email, SMS, and app-push campaigns. Achieved 60% increase in conversion through A/B testing and SQL-based data pipelines.',
-    tags: ['PEGA', 'SQL', 'A/B Testing', 'Segmentation', 'CRM'],
+    description: 'Defined user stories, acceptance criteria, and product requirements for a PEGA CRM campaign automation product. Executed A/B testing frameworks and SQL predictive models across email, SMS, and app-push channels, achieving a 60% uplift in conversion rates.',
+    tags: ['PEGA CRM', 'SQL Pipelines', 'A/B Testing', 'Segmentation', 'Requirement Gathering'],
     metric: '+60% conversion',
-    span: 'col-span-1 lg:col-span-5',
+    span: 'col-span-1 lg:col-span-6',
   },
   {
-    title: 'Carbon Emission Prediction Module',
+    title: 'Carbon Emission Prediction & ESG Module',
     company: 'Infosys Limited',
-    role: 'Project Lead',
-    description: 'Spearheaded a Palantir module predicting carbon emission reductions from eco-friendly oil extraction practices, improving operational efficiency by 10% and reducing costs.',
-    tags: ['Palantir', 'ESG Analytics', 'Python', 'Data Modeling'],
+    role: 'Senior Data Analyst',
+    description: 'Built a Palantir Foundry module predicting carbon emission reductions from eco-friendly extraction practices, improving operational efficiency by 10% and powering client sustainability reporting.',
+    tags: ['Palantir Foundry', 'ESG Analytics', 'Python', 'Data Modeling', 'Workflow Automation'],
     metric: '+10% efficiency',
-    span: 'col-span-1 lg:col-span-12',
+    span: 'col-span-1 lg:col-span-6',
   }
 ]
 

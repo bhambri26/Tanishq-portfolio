@@ -16,7 +16,7 @@ const projects = [
   {
     title: 'Oil & Gas Upstream Forecasting & ML Pipelines',
     company: 'Infosys Limited (2021–2026)',
-    role: 'Senior Data Analyst',
+    role: 'Data Analytics Lead',
     description: 'Led a team of 3 analysts to build and tune forecasting models in Palantir Foundry Code Repository (Python). Processed 1.1M+ rows of daily upstream production data across 4 well types (oil, gas, water, fuel), achieving a 15% accuracy improvement and 35% pattern recognition gain.',
     tags: ['Palantir Foundry', 'Python', 'Machine Learning', 'Decline Curve Analysis', 'PySpark'],
     metric: '+15% accuracy',
@@ -34,7 +34,7 @@ const projects = [
   {
     title: 'Carbon Emission Prediction & ESG Module',
     company: 'Infosys Limited',
-    role: 'Senior Data Analyst',
+    role: 'Data Analytics Lead',
     description: 'Built a Palantir Foundry module predicting carbon emission reductions from eco-friendly extraction practices, improving operational efficiency by 10% and powering client sustainability reporting.',
     tags: ['Palantir Foundry', 'ESG Analytics', 'Python', 'Data Modeling', 'Workflow Automation'],
     metric: '+10% efficiency',

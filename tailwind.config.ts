@@ -15,9 +15,9 @@ const config: Config = {
         muted: "#2E2E2E",
       },
       fontFamily: {
-        display: ['var(--font-syne)'],
-        mono: ['var(--font-space-mono)'],
-        sans: ['var(--font-dm-sans)'],
+        display: ['var(--font-outfit)'],
+        mono: ['var(--font-space-grotesk)'],
+        sans: ['var(--font-inter)'],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

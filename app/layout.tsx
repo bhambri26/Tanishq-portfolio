@@ -1,30 +1,32 @@
 import type { Metadata } from 'next'
-import { Syne, Space_Mono, DM_Sans } from 'next/font/google'
+import { Outfit, Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import Cursor from '@/components/Cursor'
 
-const syne = Syne({ 
+const outfit = Outfit({ 
   subsets: ['latin'],
-  variable: '--font-syne',
+  variable: '--font-outfit',
   display: 'swap',
 })
 
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-space-mono',
+  variable: '--font-inter',
   display: 'swap',
 })
 
-const dmSans = DM_Sans({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-space-grotesk',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Tanishq Bhambri | Senior Data Analyst',
-  description: 'Senior Data Analyst / Technology Analyst with 8 years of experience across Palantir Foundry, GenAI/RAG pipelines, and Oil & Gas analytics.',
+  title: 'Tanishq Bhambri | Data Analytics Lead & AI Product Strategist',
+  description: 'Data Analytics & IoT Lead with 9 years of experience across Palantir Foundry (AIP), GenAI/RAG pipelines, and enterprise AI product strategy. CSPO® Certified.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
@@ -34,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${syne.variable} ${spaceMono.variable} ${dmSans.variable} font-sans antialiased bg-background text-foreground`}>
+      <body className={`${outfit.variable} ${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background text-foreground`}>
         <div className="noise-overlay" />
         <Cursor />
         <main className="relative z-10">

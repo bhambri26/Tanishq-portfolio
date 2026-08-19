@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Phone, ExternalLink } from 'lucide-react'
+import { Mail, Phone } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -44,28 +44,6 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 mb-8">
-            <a 
-              href="https://www.linkedin.com/in/tanishqbhambri" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center gap-2 px-6 py-3 border border-white/10 rounded-full hover:bg-white/5 hover:border-accent transition-colors interactive text-foreground uppercase font-mono text-sm tracking-widest"
-            >
-              LinkedIn Profile
-              <ExternalLink size={16} className="text-accent" />
-            </a>
-
-            <a 
-              href="https://github.com/bhambri26" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center gap-2 px-6 py-3 border border-white/10 rounded-full hover:bg-white/5 hover:border-accent transition-colors interactive text-foreground uppercase font-mono text-sm tracking-widest"
-            >
-              GitHub
-              <ExternalLink size={16} className="text-accent" />
-            </a>
-          </div>
-
           <h4 className="font-display text-2xl md:text-4xl font-bold uppercase tracking-tighter text-foreground mb-2 text-border mix-blend-difference">
             "Let's turn raw data into real decisions."
           </h4>

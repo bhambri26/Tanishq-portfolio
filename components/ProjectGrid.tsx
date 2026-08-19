@@ -23,21 +23,21 @@ const projects = [
     span: 'col-span-1 lg:col-span-5',
   },
   {
+    title: 'Carbon Emission Prediction & ESG Module',
+    company: 'Infosys Limited (2021–2026)',
+    role: 'Data Analytics Lead',
+    description: 'Built a Palantir Foundry module predicting carbon emission reductions from eco-friendly extraction practices, improving operational efficiency by 10% and powering client sustainability reporting.',
+    tags: ['Palantir Foundry', 'ESG Analytics', 'Python', 'Data Modeling', 'Workflow Automation'],
+    metric: '+10% efficiency',
+    span: 'col-span-1 lg:col-span-6',
+  },
+  {
     title: 'PEGA CRM Multi-Channel Campaign Engine',
     company: 'Infosys Limited (2017–2020)',
     role: 'Senior System Engineer',
     description: 'Defined user stories, acceptance criteria, and product requirements for a PEGA CRM campaign automation product. Executed A/B testing frameworks and SQL predictive models across email, SMS, and app-push channels, achieving a 60% uplift in conversion rates.',
     tags: ['PEGA CRM', 'SQL Pipelines', 'A/B Testing', 'Segmentation', 'Requirement Gathering'],
     metric: '+60% conversion',
-    span: 'col-span-1 lg:col-span-6',
-  },
-  {
-    title: 'Carbon Emission Prediction & ESG Module',
-    company: 'Infosys Limited',
-    role: 'Data Analytics Lead',
-    description: 'Built a Palantir Foundry module predicting carbon emission reductions from eco-friendly extraction practices, improving operational efficiency by 10% and powering client sustainability reporting.',
-    tags: ['Palantir Foundry', 'ESG Analytics', 'Python', 'Data Modeling', 'Workflow Automation'],
-    metric: '+10% efficiency',
     span: 'col-span-1 lg:col-span-6',
   }
 ]

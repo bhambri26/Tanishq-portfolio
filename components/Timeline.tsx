@@ -6,6 +6,12 @@ import { Award, ExternalLink } from 'lucide-react'
 
 /* ─── Brand SVG Icons (inline for zero dependencies) ─── */
 
+const ClaudeIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="#D97757">
+    <path d="M12 2a1.5 1.5 0 0 1 1.5 1.5v2.88a1.5 1.5 0 0 1-3 0V3.5A1.5 1.5 0 0 1 12 2zm6.364 2.636a1.5 1.5 0 0 1 0 2.122l-2.036 2.036a1.5 1.5 0 0 1-2.122-2.122l2.036-2.036a1.5 1.5 0 0 1 2.122 0zM22 12a1.5 1.5 0 0 1-1.5 1.5h-2.88a1.5 1.5 0 0 1 0-3h2.88A1.5 1.5 0 0 1 22 12zm-2.636 6.364a1.5 1.5 0 0 1-2.122 0l-2.036-2.036a1.5 1.5 0 0 1 2.122-2.122l2.036 2.036a1.5 1.5 0 0 1 0 2.122zM12 22a1.5 1.5 0 0 1-1.5-1.5v-2.88a1.5 1.5 0 0 1 3 0v2.88A1.5 1.5 0 0 1 12 22zm-6.364-2.636a1.5 1.5 0 0 1 0-2.122l2.036-2.036a1.5 1.5 0 1 1 2.122 2.122l-2.036 2.036a1.5 1.5 0 0 1-2.122 0zM2 12a1.5 1.5 0 0 1 1.5-1.5h2.88a1.5 1.5 0 0 1 0 3H3.5A1.5 1.5 0 0 1 2 12zm2.636-6.364a1.5 1.5 0 0 1 2.122 0l2.036 2.036a1.5 1.5 0 0 1-2.122 2.122L4.636 7.758a1.5 1.5 0 0 1 0-2.122z"/>
+  </svg>
+)
+
 const NvidiaIcon = () => (
   <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="#76B900">
     <path d="M8.948 8.798V6.896c.06-.005.12-.007.18-.01C13.794 6.612 16.39 9.75 16.39 9.75s-2.876 3.505-5.834 3.505c-.56 0-1.08-.1-1.608-.3V9.472c1.86.22 2.25.96 3.35 2.11l2.49-2.1s-1.89-2.58-5.34-2.58c-.17 0-.34.01-.5.03v-.134zM8.948 4.79v1.47l-.5.06C4.698 6.87 2.118 10.47 2.118 10.47s3.08 4.8 7.33 4.8c.52 0 1.02-.06 1.5-.17v.67c-.48.08-.97.13-1.48.13-3.87 0-6.69-3.07-8.47-5.1.66-.79 3.14-3.44 6.45-4.49V4.79h1.5zm0 8.168v1.17c-3.63-.73-5.89 2.62-5.89 2.62s1.92 2.89 5.39 2.89c.17 0 .34-.01.5-.03v1.34c-.16.01-.33.02-.5.02-4.16 0-7.29-3.55-7.29-3.55s2.29-4.14 7.79-4.46zm6.35-3.478s2.77-3.66-6.35-4.63v1.51c4.09.39 6.35 3.12 6.35 3.12zm4.33 1s-4.06 5.67-9.43 5.67c-.57 0-1.12-.06-1.65-.17v.67c.47.09.95.14 1.45.14 5.56 0 9.18-4.32 10.1-5.56-.57-.75-1.76-2.08-3.18-3.22l-.98.78c1.11.85 2.32 2 3.69 3.69z"/>
@@ -48,6 +54,16 @@ const IeltsIcon = () => (
 
 const certifications = [
   {
+    title: 'Claude Certified Associate - Foundations',
+    organization: 'Anthropic',
+    date: 'Aug 2026',
+    badge: 'Claude Associate',
+    badgeBg: 'bg-[#D97757]/10 text-[#D97757] border-[#D97757]/30',
+    description: 'Certified in Claude & Anthropic LLM Architecture, Advanced Prompt Engineering, Context Window Optimization & Multi-turn Tool Integration.',
+    icon: <ClaudeIcon />,
+    verifyUrl: 'https://www.credly.com/badges/dcece867-b192-4752-8f40-71ab28487b46'
+  },
+  {
     title: 'Certified Scrum Product Owner (CSPO®)',
     organization: 'Scrum Alliance',
     date: '2026',
@@ -60,7 +76,7 @@ const certifications = [
   {
     title: 'NVIDIA-Certified Associate: Accelerated Data Science',
     organization: 'NVIDIA',
-    date: 'May 2026 – May 2028',
+    date: 'May 2026',
     badge: 'NVIDIA',
     badgeBg: 'bg-[#76B900]/10 text-[#76B900] border-[#76B900]/30',
     description: 'GPU-accelerated Data Science, RAPIDS, Feature Engineering & High-Performance Machine Learning Pipelines.',

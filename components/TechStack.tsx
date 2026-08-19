@@ -45,6 +45,7 @@ const categories = [
     icon: <Sparkles size={20} className="text-accent mr-3" />,
     items: [
       'Large Language Models (LLMs)',
+      'Claude (Anthropic)',
       'LLM Product Strategy & Integration',
       'Retrieval-Augmented Generation (RAG)',
       'Prompt Engineering',

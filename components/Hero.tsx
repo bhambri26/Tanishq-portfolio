@@ -1,30 +1,21 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown, Linkedin, Github } from 'lucide-react'
 
-const ROLES = [
-  "AI Product Manager (CSPO®)",
-  "AI Product Owner & Data Strategist",
-  "Data Analytics & IoT Lead @ Hexaware",
-  "Palantir Foundry (AIP) Specialist",
-  "GenAI & RAG Architect"
+const KEY_SKILLS = [
+  "Palantir Foundry (AIP)",
+  "GenAI & RAG Architecture",
+  "CSPO® Product Strategy",
+  "Data Analytics & ML Pipelines",
+  "Azure DevOps Agile"
 ]
 
 export default function Hero() {
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
   const { scrollYProgress } = useScroll()
   
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"])
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRoleIndex((prev) => (prev + 1) % ROLES.length)
-    }, 2500)
-    return () => clearInterval(interval)
-  }, [])
 
   return (
     <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
@@ -42,7 +33,7 @@ export default function Hero() {
       <div className="z-10 flex flex-col items-center text-center px-4 w-full max-w-5xl">
         {/* Name */}
         <motion.h1 
-          className="font-display text-5xl md:text-8xl lg:text-[8.5rem] font-black uppercase tracking-[-0.04em] leading-[0.9] mb-6"
+          className="font-display text-5xl md:text-8xl lg:text-[8.5rem] font-black uppercase tracking-[-0.04em] leading-[0.9] mb-4"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0, 1] }}
@@ -52,43 +43,44 @@ export default function Hero() {
           <span className="text-accent">Bhambri</span>
         </motion.h1>
 
-        {/* Aspiration line - moved below name */}
+        {/* Aspiration line */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="font-sans text-sm md:text-base text-foreground/50 tracking-[0.2em] uppercase mb-6"
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+          className="font-sans text-sm md:text-base text-foreground/70 tracking-[0.2em] uppercase mb-4"
         >
           Aspiring AI Product Manager / AI Product Owner
         </motion.p>
 
         {/* Thin divider */}
         <motion.div 
-          className="w-16 h-px bg-accent mb-6"
+          className="w-16 h-px bg-accent mb-5"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
         />
 
-        {/* Role switcher */}
-        <div className="h-10 md:h-12 overflow-hidden relative w-full flex justify-center mb-8">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={currentRoleIndex}
-              className="font-mono text-accent/90 text-base md:text-xl tracking-wide"
-              initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -16, filter: "blur(4px)" }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
+        {/* Key skills badges replacing rolling text */}
+        <motion.div 
+          className="flex flex-wrap justify-center gap-2 max-w-2xl mb-6"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+        >
+          {KEY_SKILLS.map((skill, index) => (
+            <span 
+              key={index}
+              className="font-mono text-xs text-accent/90 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full uppercase tracking-wider"
             >
-              {ROLES[currentRoleIndex]}
-            </motion.p>
-          </AnimatePresence>
-        </div>
+              {skill}
+            </span>
+          ))}
+        </motion.div>
 
-        {/* Social links */}
+        {/* Social links (moved 2px up via -translate-y-[2px]) */}
         <motion.div
-          className="flex items-center gap-4"
+          className="flex items-center gap-4 -translate-y-[2px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.6 }}

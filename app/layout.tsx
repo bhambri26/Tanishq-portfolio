@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Outfit, Inter, Space_Grotesk } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import Cursor from '@/components/Cursor'
 
@@ -39,6 +40,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Tanishq Bhambri', url: 'https://www.linkedin.com/in/tanishqbhambri' }],
   creator: 'Tanishq Bhambri',
+  verification: {
+    google: '9nzqNsMzEzNwAHWrIsg1dKH-jCS-d06abceSL4OJ3wg',
+  },
   openGraph: {
     title: 'Tanishq Bhambri | AI Product Manager & Data Strategist',
     description: 'Explore projects, experience, and certifications of Tanishq Bhambri across Palantir Foundry, GenAI pipelines, and AI product ownership.',
@@ -114,6 +118,27 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <meta name="google-site-verification" content="9nzqNsMzEzNwAHWrIsg1dKH-jCS-d06abceSL4OJ3wg" />
+        
+        {/* Google Analytics tag (gtag.js) */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-888Y3CNJX1"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-888Y3CNJX1');
+            `,
+          }}
+        />
+
+        {/* Structured Data (JSON-LD) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -108,7 +108,7 @@ export default function About() {
                 </motion.span>
               </span>
             </h3>
-          </div>
+          </motion.div>
 
           <motion.p 
             className="text-lg md:text-xl font-sans leading-relaxed text-foreground/80 font-light"

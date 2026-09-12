@@ -18,13 +18,13 @@ export default function Home() {
 
   return (
     <div className="bg-background min-h-screen text-foreground selection:bg-accent selection:text-background">
-      <Hero />
+      <div id="hero"><Hero /></div>
       <CanvasSequence />
-      <About />
-      <TechStack />
-      <ProjectGrid />
-      <Timeline />
-      <Education />
+      <div id="about"><About /></div>
+      <div id="skills"><TechStack /></div>
+      <div id="projects"><ProjectGrid /></div>
+      <div id="certifications"><Timeline /></div>
+      <div id="education"><Education /></div>
       <Footer />
     </div>
   )

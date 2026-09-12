@@ -84,10 +84,31 @@ export default function About() {
             <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-2">
               Current Role & Strategic Horizon
             </span>
-            <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground leading-tight">
-              Data Analytics & IoT Lead <span className="text-accent">@ Hexaware</span> → Aspiring <span className="text-accent">AI Product Manager / Owner</span>
+            <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground leading-tight flex flex-col">
+              <span className="overflow-hidden block">
+                <motion.span 
+                  className="block"
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  Data Analytics & IoT Lead <span className="text-accent">@ Hexaware</span> →
+                </motion.span>
+              </span>
+              <span className="overflow-hidden block">
+                <motion.span 
+                  className="block"
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                >
+                  Aspiring <span className="text-accent">AI Product Manager / Owner</span>
+                </motion.span>
+              </span>
             </h3>
-          </motion.div>
+          </div>
 
           <motion.p 
             className="text-lg md:text-xl font-sans leading-relaxed text-foreground/80 font-light"

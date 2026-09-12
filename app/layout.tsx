@@ -3,6 +3,8 @@ import { Outfit, Inter, Space_Grotesk } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import Cursor from '@/components/Cursor'
+import SmoothScroll from '@/components/SmoothScroll'
+import SideNav from '@/components/SideNav'
 
 const outfit = Outfit({ 
   subsets: ['latin'],
@@ -145,8 +147,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${outfit.variable} ${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background text-foreground`}>
+        <SmoothScroll />
         <div className="noise-overlay" />
         <Cursor />
+        <SideNav />
         <main className="relative z-10">
           {children}
         </main>

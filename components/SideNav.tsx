@@ -45,16 +45,16 @@ export default function SideNav() {
 
   return (
     <motion.div 
-      initial={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1, duration: 0.8 }}
-      className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-4"
+      className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-4 items-end"
     >
       {navItems.map((item) => (
         <button
           key={item.id}
           onClick={() => scrollTo(item.id)}
-          className="group relative flex items-center justify-start h-8 w-8"
+          className="group relative flex items-center justify-end h-8 w-8"
           aria-label={`Scroll to ${item.label}`}
         >
           <div 
@@ -65,7 +65,7 @@ export default function SideNav() {
             }`}
           />
           <span 
-            className="absolute left-6 text-xs text-foreground/70 opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap"
+            className="absolute right-6 text-xs text-foreground/70 opacity-0 translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap"
           >
             {item.label}
           </span>

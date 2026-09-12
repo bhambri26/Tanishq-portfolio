@@ -1,61 +1,58 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
 export default function Cursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
+  const cursorRef = useRef<HTMLDivElement>(null)
+  // Track position with refs — no React state, no re-renders
+  const pos = useRef({ x: -100, y: -100 })
+  const isHovering = useRef(false)
+  const rafId = useRef<number | null>(null)
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+    const cursor = cursorRef.current
+    if (!cursor) return
+
+    // Use rAF to batch DOM writes — no React re-render overhead
+    const tick = () => {
+      const scale = isHovering.current ? 2.5 : 1
+      cursor.style.transform = `translate(${pos.current.x - 8}px, ${pos.current.y - 8}px) scale(${scale})`
+      rafId.current = requestAnimationFrame(tick)
     }
-    
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-      if (
-        target.tagName.toLowerCase() === 'a' ||
-        target.tagName.toLowerCase() === 'button' ||
-        target.closest('a') ||
-        target.closest('button') ||
-        target.classList.contains('interactive')
-      ) {
-        setIsHovering(true)
-      } else {
-        setIsHovering(false)
-      }
+    rafId.current = requestAnimationFrame(tick)
+
+    const onMove = (e: MouseEvent) => {
+      pos.current = { x: e.clientX, y: e.clientY }
     }
 
-    window.addEventListener('mousemove', updateMousePosition)
-    window.addEventListener('mouseover', handleMouseOver)
+    const onOver = (e: MouseEvent) => {
+      const t = e.target as HTMLElement
+      isHovering.current = !!(
+        t.tagName === 'A' ||
+        t.tagName === 'BUTTON' ||
+        t.closest('a') ||
+        t.closest('button') ||
+        t.classList.contains('interactive')
+      )
+    }
+
+    window.addEventListener('mousemove', onMove, { passive: true })
+    window.addEventListener('mouseover', onOver, { passive: true })
 
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition)
-      window.removeEventListener('mouseover', handleMouseOver)
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mouseover', onOver)
+      if (rafId.current) cancelAnimationFrame(rafId.current)
     }
   }, [])
 
   return (
     <>
-      {/* Remove default cursor on body */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        body { cursor: none; }
-        a, button, [role="button"] { cursor: none; }
-      `}} />
-      <motion.div
-        className="fixed top-0 left-0 w-4 h-4 bg-accent rounded-full pointer-events-none z-[100] mix-blend-exclusion"
-        animate={{
-          x: mousePosition.x - 8,
-          y: mousePosition.y - 8,
-          scale: isHovering ? 2.5 : 1,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 700,
-          damping: 30,
-          mass: 0.5
-        }}
+      <style dangerouslySetInnerHTML={{ __html: `body,a,button,[role="button"]{cursor:none!important}` }} />
+      <div
+        ref={cursorRef}
+        className="fixed top-0 left-0 w-4 h-4 bg-accent rounded-full pointer-events-none z-[100] mix-blend-exclusion will-change-transform"
+        style={{ transition: 'transform 0.08s linear', transform: 'translate(-100px,-100px)' }}
       />
     </>
   )

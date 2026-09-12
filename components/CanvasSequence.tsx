@@ -162,8 +162,19 @@ export default function CanvasSequence() {
     }
   }
 
+  // Throttled canvas redraws — only one draw per animation frame max
+  const rafScheduled = useRef(false)
+  const latestFrame = useRef(0)
+
   useMotionValueEvent(frameIndex, "change", (latest) => {
-    drawFrame(Math.round(latest))
+    latestFrame.current = Math.round(latest)
+    if (!rafScheduled.current) {
+      rafScheduled.current = true
+      requestAnimationFrame(() => {
+        drawFrame(latestFrame.current)
+        rafScheduled.current = false
+      })
+    }
   })
 
   // Initial draw
@@ -178,6 +189,7 @@ export default function CanvasSequence() {
         <canvas 
           ref={canvasRef} 
           className="absolute inset-0 w-full h-full object-cover opacity-80"
+          style={{ willChange: 'contents' }}
         />
         
         <div className="absolute inset-0 pointer-events-none ring-inset ring-[10vw] ring-background/50 blur-3xl opacity-80 mix-blend-multiply" />

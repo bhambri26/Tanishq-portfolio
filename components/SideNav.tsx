@@ -15,38 +15,31 @@ export default function SideNav() {
   const [activeSection, setActiveSection] = useState('hero')
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = navItems.map(item => document.getElementById(item.id))
-      
-      let currentActive = 'hero'
-      let minDistance = Infinity
-
-      sections.forEach(section => {
-        if (!section) return
-        const rect = section.getBoundingClientRect()
-        const distance = Math.abs(rect.top)
-        
-        if (distance < minDistance && rect.top < window.innerHeight / 2) {
-          minDistance = distance
-          currentActive = section.id
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id)
         }
       })
-      
-      setActiveSection(currentActive)
     }
 
-    // Trigger once on mount
-    handleScroll()
-    
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: '-30% 0px -40% 0px',
+      threshold: 0
+    })
+
+    navItems.forEach((item) => {
+      const el = document.getElementById(item.id)
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
   }, [])
 
   const scrollTo = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      // If lenis is active, it intercepts native scrollIntoView when smooth
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }
 

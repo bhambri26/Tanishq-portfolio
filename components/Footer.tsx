@@ -35,6 +35,30 @@ export default function Footer() {
               +91 9501019292
             </a>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="flex flex-wrap gap-3 pt-2"
+          >
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Tanishq_Bhambri_Resume.pdf"
+              className="interactive inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:border-accent/40 text-foreground/80 hover:text-accent font-mono text-xs uppercase tracking-wider transition-all"
+            >
+              Download Resume (PDF)
+            </a>
+            <a
+              href="#book-chat"
+              className="interactive inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-accent font-mono text-xs uppercase tracking-wider hover:bg-accent/20 transition-all"
+            >
+              Book 15-Min Chat
+            </a>
+          </motion.div>
         </div>
 
         <motion.div 

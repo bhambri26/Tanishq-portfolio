@@ -5,10 +5,13 @@ import { useEffect, useState } from 'react'
 const navItems = [
   { id: 'hero', label: 'Home' },
   { id: 'about', label: 'About' },
+  { id: 'case-studies', label: 'Case Studies' },
+  { id: 'philosophy', label: 'Philosophy' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'certifications', label: 'Certifications' },
-  { id: 'education', label: 'Education' }
+  { id: 'education', label: 'Education' },
+  { id: 'book-chat', label: 'Book Chat' }
 ]
 
 export default function SideNav() {

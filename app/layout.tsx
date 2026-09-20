@@ -4,6 +4,7 @@ import Script from 'next/script'
 import './globals.css'
 import Cursor from '@/components/Cursor'
 import SideNav from '@/components/SideNav'
+import Header from '@/components/SmoothScroll'
 
 const outfit = Outfit({ 
   subsets: ['latin'],
@@ -147,6 +148,7 @@ export default function RootLayout({
       </head>
       <body className={`${outfit.variable} ${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background text-foreground`}>
         <div className="noise-overlay" />
+        <Header />
         <Cursor />
         <SideNav />
         <main className="relative z-10">

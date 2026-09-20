@@ -209,3 +209,371 @@ export default function Timeline() {
     </section>
   )
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   VISUAL CASE STUDIES & SANITIZED ARCHITECTURE DIAGRAMS
+   ══════════════════════════════════════════════════════════════════ */
+
+const CASE_STUDIES = [
+  {
+    id: 'oil-gas',
+    tag: 'Palantir Foundry • Time-Series ML • Upstream Energy',
+    title: 'Upstream Oil & Gas Well Production Forecasting',
+    metric: '+15% Forecast Accuracy | 1.1M+ Daily Rows',
+    summary: 'Multi-tiered automated data pipeline ingesting raw sensor SCADA feeds across 4 well streams (oil, gas, water, fuel gas), orchestrating automated data sanitization & DCA (Decline Curve Analysis) predictive modeling inside Palantir Foundry Code Repositories.',
+    nodes: [
+      { step: '01', title: 'SCADA Ingestion', desc: 'IoT flowmeters & pressure gauges streaming raw readings (1.1M+ rows/day)', type: 'source' },
+      { step: '02', title: 'Foundry Data Pipeline', desc: 'PySpark cleansing, outlier suppression, time-series deduplication', type: 'transform' },
+      { step: '03', title: 'ML & Decline Curve (DCA)', desc: 'Python DCA + ensemble regression models tuned per well cohort', type: 'model' },
+      { step: '04', title: 'Foundry Ontology & AIP', desc: 'Well objects mapped with automated production targets & choke adjustments', type: 'ontology' },
+      { step: '05', title: 'Operational Workshop UI', desc: 'Real-time alert dashboards cutting response time from 12h down to 1h', type: 'delivery' }
+    ],
+    highlights: [
+      'Automated outlier filtration reduced false production anomaly alerts by 42%',
+      'Backlogged in Azure DevOps with CSPO user stories & DoD criteria',
+      'Prevented $10,000+ per occurrence in well shut-in production losses'
+    ]
+  },
+  {
+    id: 'genai-rag',
+    tag: 'GenAI Strategy • Anthropic Claude • RAG Architecture',
+    title: 'Enterprise Technical Intelligence RAG Copilot',
+    metric: '94% Retrieval Precision | 85% Answer Reliability',
+    summary: 'Enterprise-grade RAG architecture leveraging Anthropic Claude models with strict citation guardrails and vectorized domain repositories, enabling field engineers to query complex operational manuals and historical maintenance logs instantaneously.',
+    nodes: [
+      { step: '01', title: 'Corpus Ingestion', desc: 'Unstructured SOPs, field incident logs, P&IDs, equipment manuals', type: 'source' },
+      { step: '02', title: 'Chunking & Metadata', desc: 'Semantic hierarchy chunking + domain taxonomy tag enrichment', type: 'transform' },
+      { step: '03', title: 'Vector Embeddings', desc: 'High-dimensional vector indexing with hybrid lexical keyword search', type: 'model' },
+      { step: '04', title: 'Palantir AIP Guardrails', desc: 'Role-based access control, hallucination filters, provenance verification', type: 'ontology' },
+      { step: '05', title: 'Claude Reasoning Agent', desc: 'Synthesizes cited answers with source references & confidence scoring', type: 'delivery' }
+    ],
+    highlights: [
+      'Eliminated hallucinations through strict grounded citation thresholds',
+      'Reduced engineer manual troubleshooting search time by 75%',
+      'Designed with comprehensive Responsible AI & auditability benchmarks'
+    ]
+  }
+]
+
+export function ArchitectureShowcase() {
+  return (
+    <section id="case-studies" className="py-24 px-4 md:px-12 w-full bg-background border-t border-white/5 relative">
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-accent/5 blur-[120px] pointer-events-none rounded-full" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header */}
+        <motion.div 
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-xs uppercase tracking-widest mb-3">
+            System Architecture & Pipelines
+          </div>
+          <h2 className="font-display text-4xl md:text-6xl font-bold uppercase tracking-tighter text-foreground mb-4">
+            Visual Case Studies
+          </h2>
+          <div className="h-0.5 w-24 bg-accent mb-4" />
+          <p className="font-sans text-foreground/60 max-w-2xl text-base md:text-lg font-light">
+            Sanitized architecture blueprints representing production data engineering pipelines, Palantir Foundry integrations, and enterprise GenAI systems built under my product stewardship.
+          </p>
+        </motion.div>
+
+        {/* Case Studies Cards */}
+        <div className="space-y-16">
+          {CASE_STUDIES.map((study, idx) => (
+            <motion.div
+              key={study.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="glass-card p-6 md:p-10 border border-white/10 rounded-2xl relative overflow-hidden"
+            >
+              {/* Header meta */}
+              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6 border-b border-white/5 pb-6">
+                <div>
+                  <span className="font-mono text-xs text-accent uppercase tracking-wider block mb-1">
+                    {study.tag}
+                  </span>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                    {study.title}
+                  </h3>
+                </div>
+                <div className="px-4 py-2 rounded-xl bg-accent/10 border border-accent/30 text-accent font-mono text-xs font-bold uppercase tracking-wider whitespace-nowrap shadow-[0_0_12px_rgba(245,166,35,0.2)]">
+                  {study.metric}
+                </div>
+              </div>
+
+              {/* Summary */}
+              <p className="font-sans text-foreground/75 text-base md:text-lg font-light leading-relaxed mb-8 max-w-4xl">
+                {study.summary}
+              </p>
+
+              {/* Visual Pipeline Architecture (Diagram) */}
+              <div className="mb-8">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs text-foreground/50 uppercase tracking-widest">
+                    Sanitized Pipeline Architecture Blueprint
+                  </span>
+                  <span className="font-mono text-[10px] text-accent/80 uppercase tracking-wider bg-white/5 px-2 py-0.5 rounded border border-white/10">
+                    Live Data Flow
+                  </span>
+                </div>
+
+                {/* Node Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-3 relative">
+                  {study.nodes.map((node, nodeIdx) => (
+                    <div 
+                      key={node.step}
+                      className="relative p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-accent/40 hover:bg-white/[0.06] transition-all flex flex-col justify-between group"
+                    >
+                      {/* Step Indicator */}
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="font-mono text-[11px] font-bold text-accent bg-accent/15 px-2 py-0.5 rounded">
+                          STEP {node.step}
+                        </span>
+                        {nodeIdx < study.nodes.length - 1 && (
+                          <span className="text-white/20 hidden md:inline-block font-mono text-xs group-hover:text-accent transition-colors">
+                            →
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Step details */}
+                      <div>
+                        <h4 className="font-sans text-sm font-bold text-foreground mb-1 group-hover:text-accent transition-colors">
+                          {node.title}
+                        </h4>
+                        <p className="font-sans text-xs text-foreground/60 leading-snug">
+                          {node.desc}
+                        </p>
+                      </div>
+
+                      {/* Subtle accent bar at bottom */}
+                      <div className="h-0.5 w-full bg-white/10 mt-3 group-hover:bg-accent transition-colors rounded-full" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Operational & Product Highlights */}
+              <div className="pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div className="flex flex-wrap gap-4">
+                  {study.highlights.map((point, hIdx) => (
+                    <div key={hIdx} className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span className="font-sans text-xs text-foreground/70">{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MY PRODUCT PHILOSOPHY (LINKEDIN POST FORMAT)
+   ══════════════════════════════════════════════════════════════════ */
+
+const THOUGHT_PIECES = [
+  {
+    id: 'post-1',
+    topic: 'GenAI Strategy & Product Ownership',
+    date: 'Sep 2026',
+    readTime: '3 min read',
+    headline: 'Why 80% of GenAI Pilots Fail to Reach Production (And How AI PMs Fix It)',
+    postBody: [
+      "A prompt is not a product. Too many teams celebrate a slick demo, only to hit a brick wall when trying to scale LLMs inside enterprise workflows.",
+      "The hard truth? The bottleneck is almost never the model capability—it is the operational context layer. Without deterministic guardrails, structured ontology linking, and domain-grounded retrieval, models hallucinate and stakeholders lose trust.",
+      "As an AI Product Owner, my focus is shifting the squad's definition of done from 'the model answered the test question' to 'the pipeline meets strict latency SLAs, provenance verification, and measurable end-user task velocity'."
+    ],
+    takeaway: 'Key Takeaway: Build for deterministic guardrails & user intent, not just raw conversational generation.'
+  },
+  {
+    id: 'post-2',
+    topic: 'Palantir AIP vs Generic Enterprise AI',
+    date: 'Aug 2026',
+    readTime: '4 min read',
+    headline: 'Why Palantir AIP Wins Where Generic LLM Wrappers Flounder',
+    postBody: [
+      "The difference between a gimmick and a business transformation tool comes down to one word: Ontology.",
+      "Generic SaaS platforms try to connect LLMs directly to relational tables or document dumps. When an LLM doesn't understand the semantic relationship between a production well, a choke valve, and a daily dispatch schedule, it cannot make actionable recommendations.",
+      "Palantir Foundry and AIP bind the intelligence of foundation models directly to real-world operational objects and action functions. When our models recommend operational interventions, field technicians can execute with single-click auditability."
+    ],
+    takeaway: 'Key Takeaway: The value of AI in industry is directly proportional to how well your data ontology mirrors physical reality.'
+  },
+  {
+    id: 'post-3',
+    topic: 'Agile Product Management in Machine Learning',
+    date: 'Jul 2026',
+    readTime: '3 min read',
+    headline: 'Applying CSPO & Scrum to Probabilistic ML Pipelines',
+    postBody: [
+      "Classic agile assumes deterministic outputs: you code a button, click it, and it opens a modal. Machine learning is fundamentally probabilistic and iterative.",
+      "How do you write acceptance criteria when model accuracy is an evolving curve? As a CSPO®, I decompose ML epics into distinct risk horizons: data feasibility sprints, baseline heuristic benchmarks, model error distribution tuning, and finally shadow-deployment UAT.",
+      "This prevents multi-month research dead-ends and ensures engineering delivers demonstrable, quantified value to business stakeholders every two weeks."
+    ],
+    takeaway: 'Key Takeaway: Treat ML uncertainty as an agile backlog item that shrinks with hypothesis-driven sprints.'
+  }
+]
+
+export function ProductPhilosophy() {
+  return (
+    <section id="philosophy" className="py-24 px-4 md:px-12 w-full bg-background border-t border-white/5 relative">
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header */}
+        <motion.div 
+          className="mb-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-xs uppercase tracking-widest mb-3">
+            Thought Leadership & Articles
+          </div>
+          <h2 className="font-display text-4xl md:text-6xl font-bold uppercase tracking-tighter text-foreground mb-4">
+            My Product Philosophy
+          </h2>
+          <div className="h-0.5 w-24 bg-accent mx-auto mb-4" />
+          <p className="font-sans text-foreground/60 max-w-2xl mx-auto text-base md:text-lg font-light">
+            Short thought pieces and product principles on GenAI strategy, Palantir AIP architecture, and agile data product leadership.
+          </p>
+        </motion.div>
+
+        {/* Thought Cards (LinkedIn post format) */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {THOUGHT_PIECES.map((piece, idx) => (
+            <motion.article
+              key={piece.id}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="glass-card p-6 md:p-8 rounded-2xl flex flex-col justify-between border border-white/10 hover:border-accent/40 transition-all group"
+            >
+              <div>
+                {/* Author row & Meta */}
+                <div className="flex items-center justify-between gap-3 mb-4 pb-4 border-b border-white/5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-accent text-background font-display font-black flex items-center justify-center text-sm shadow-[0_0_10px_rgba(245,166,35,0.3)]">
+                      TB
+                    </div>
+                    <div>
+                      <h4 className="font-sans text-xs font-bold text-foreground">Tanishq Bhambri</h4>
+                      <p className="font-mono text-[10px] text-foreground/40">{piece.readTime} • {piece.date}</p>
+                    </div>
+                  </div>
+                  <span className="font-mono text-[10px] text-accent/90 uppercase tracking-wider bg-accent/10 px-2 py-0.5 rounded border border-accent/20">
+                    Insight
+                  </span>
+                </div>
+
+                {/* Topic Tag */}
+                <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-2">
+                  {piece.topic}
+                </span>
+
+                {/* Headline */}
+                <h3 className="font-sans text-lg font-bold text-foreground mb-4 group-hover:text-accent transition-colors leading-snug">
+                  {piece.headline}
+                </h3>
+
+                {/* Body paragraphs */}
+                <div className="space-y-3 font-sans text-sm text-foreground/75 font-light leading-relaxed mb-6">
+                  {piece.postBody.map((paragraph, pIdx) => (
+                    <p key={pIdx}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+
+              {/* Takeaway Box */}
+              <div className="pt-4 border-t border-white/5">
+                <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10">
+                  <p className="font-mono text-xs text-accent/90 leading-relaxed font-medium">
+                    {piece.takeaway}
+                  </p>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   CALENDLY BOOKING SECTION ("BOOK A 15-MIN CHAT")
+   ══════════════════════════════════════════════════════════════════ */
+
+export function CalendlySection() {
+  return (
+    <section id="book-chat" className="py-20 px-4 md:px-12 w-full bg-background border-t border-white/5 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 blur-[140px] pointer-events-none rounded-full" />
+      
+      <div className="max-w-4xl mx-auto relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-xs uppercase tracking-widest mb-4">
+            Direct Calendar Access
+          </div>
+
+          <h2 className="font-display text-4xl md:text-6xl font-bold uppercase tracking-tighter text-foreground mb-4">
+            Book a 15-Minute Chat
+          </h2>
+          <div className="h-0.5 w-24 bg-accent mx-auto mb-6" />
+
+          <p className="font-sans text-foreground/70 max-w-xl mx-auto text-base md:text-lg font-light leading-relaxed mb-8">
+            Whether you are discussing AI Product Management roles, Palantir AIP architecture, or enterprise GenAI opportunities—let’s connect.
+          </p>
+
+          {/* Interactive Calendly Card */}
+          <div className="glass-card p-8 md:p-12 rounded-3xl border border-white/15 max-w-2xl mx-auto shadow-2xl relative overflow-hidden">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="text-left">
+                <span className="font-mono text-xs uppercase tracking-widest text-accent block mb-1">
+                  Available Slots
+                </span>
+                <h3 className="font-sans text-xl font-bold text-foreground">
+                  Recruiter & Strategy Intro Call
+                </h3>
+                <p className="font-sans text-sm text-foreground/60 mt-1">
+                  15 Minutes • Google Meet / Teams • Instant Confirmation
+                </p>
+              </div>
+
+              <a
+                href="https://calendly.com/tanishqbhambri/15min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="interactive inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-accent text-background font-mono text-xs font-bold uppercase tracking-wider hover:bg-accent/90 transition-all shadow-[0_0_20px_rgba(245,166,35,0.4)] whitespace-nowrap transform hover:-translate-y-0.5"
+              >
+                Open Calendly Slots →
+              </a>
+            </div>
+
+            {/* Quick Contact Fallback */}
+            <div className="mt-8 pt-6 border-t border-white/5 flex flex-wrap items-center justify-center gap-6 text-xs font-mono text-foreground/60">
+              <a href="mailto:bhambritanishq08@gmail.com" className="hover:text-accent transition-colors">
+                Email: bhambritanishq08@gmail.com
+              </a>
+              <span>•</span>
+              <a href="tel:+919501019292" className="hover:text-accent transition-colors">
+                Phone: +91 9501019292
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}

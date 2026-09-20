@@ -2,6 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Animated Background Blobs ─────────────────────────────────────── */
+
+@keyframes blobDrift1 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(60px, -80px) scale(1.08); }
+  66%  { transform: translate(-40px, 50px) scale(0.95); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes blobDrift2 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(-70px, 60px) scale(1.05); }
+  66%  { transform: translate(50px, -40px) scale(0.92); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes blobDrift3 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  50%  { transform: translate(40px, 70px) scale(1.1); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes blobDrift4 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  40%  { transform: translate(-50px, -60px) scale(1.06); }
+  80%  { transform: translate(30px, 40px) scale(0.94); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.03; }
+  50%       { opacity: 0.06; }
+}
+
+/* Background canvas container */
+.bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Dot-grid overlay */
+.bg-canvas::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(245, 166, 35, 0.35) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridPulse 6s ease-in-out infinite;
+}
+
+/* Individual blob orbs */
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  will-change: transform;
+  opacity: 0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+.bg-blob-1 {
+  width: 600px;
+  height: 600px;
+  top: -150px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.18) 0%, rgba(193, 122, 26, 0.06) 70%, transparent 100%);
+  opacity: 0.8;
+  animation-name: blobDrift1;
+  animation-duration: 22s;
+}
+
+.bg-blob-2 {
+  width: 500px;
+  height: 500px;
+  top: 30%;
+  right: -80px;
+  background: radial-gradient(circle, rgba(99, 45, 180, 0.15) 0%, rgba(60, 20, 120, 0.05) 70%, transparent 100%);
+  opacity: 0.7;
+  animation-name: blobDrift2;
+  animation-duration: 28s;
+}
+
+.bg-blob-3 {
+  width: 450px;
+  height: 450px;
+  bottom: 10%;
+  left: 15%;
+  background: radial-gradient(circle, rgba(13, 60, 60, 0.35) 0%, rgba(0, 80, 80, 0.1) 70%, transparent 100%);
+  opacity: 0.6;
+  animation-name: blobDrift3;
+  animation-duration: 18s;
+}
+
+.bg-blob-4 {
+  width: 350px;
+  height: 350px;
+  top: 55%;
+  left: 45%;
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.10) 0%, transparent 70%);
+  opacity: 0.5;
+  animation-name: blobDrift4;
+  animation-duration: 24s;
+}
+
+/* ─── Utilities ──────────────────────────────────────────────────────── */
+
 @layer base {
   body {
     background-color: theme('colors.background');
@@ -20,7 +131,7 @@
     height: 100vh;
     pointer-events: none;
     z-index: 50;
-    opacity: 0.08;
+    opacity: 0.06;
     will-change: transform;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
@@ -34,3 +145,4 @@
     color: transparent;
   }
 }
+

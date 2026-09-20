@@ -148,6 +148,13 @@ export default function RootLayout({
         />
       </head>
       <body className={`${outfit.variable} ${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background text-foreground`}>
+        {/* Animated gradient background */}
+        <div className="bg-canvas" aria-hidden="true">
+          <div className="bg-blob bg-blob-1" />
+          <div className="bg-blob bg-blob-2" />
+          <div className="bg-blob bg-blob-3" />
+          <div className="bg-blob bg-blob-4" />
+        </div>
         <div className="noise-overlay" />
         <Header />
         <Cursor />

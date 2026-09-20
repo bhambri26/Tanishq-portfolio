@@ -6,7 +6,7 @@ import CanvasSequence from '@/components/CanvasSequence'
 import About from '@/components/About'
 import TechStack from '@/components/TechStack'
 import ProjectGrid from '@/components/ProjectGrid'
-import Timeline, { ArchitectureShowcase, ProductPhilosophy, CalendlySection } from '@/components/Timeline'
+import Timeline, { ArchitectureShowcase, ProductPhilosophy } from '@/components/Timeline'
 import Education from '@/components/Education'
 import Footer from '@/components/Footer'
 
@@ -27,7 +27,6 @@ export default function Home() {
       <div id="projects"><ProjectGrid /></div>
       <div id="certifications"><Timeline /></div>
       <div id="education"><Education /></div>
-      <div id="book-chat"><CalendlySection /></div>
       <Footer />
     </div>
   )

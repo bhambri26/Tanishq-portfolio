@@ -10,8 +10,7 @@ const navItems = [
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'certifications', label: 'Certifications' },
-  { id: 'education', label: 'Education' },
-  { id: 'book-chat', label: 'Book Chat' }
+  { id: 'education', label: 'Education' }
 ]
 
 export default function SideNav() {

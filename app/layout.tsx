@@ -5,6 +5,7 @@ import './globals.css'
 import Cursor from '@/components/Cursor'
 import SideNav from '@/components/SideNav'
 import Header from '@/components/SmoothScroll'
+import { Analytics } from '@vercel/analytics/next'
 
 const outfit = Outfit({ 
   subsets: ['latin'],
@@ -154,6 +155,7 @@ export default function RootLayout({
         <main className="relative z-10">
           {children}
         </main>
+        <Analytics />
       </body>
     </html>
   )

@@ -245,30 +245,17 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* Direct Booking Actions */}
-              <div className="space-y-3 mb-6">
+              {/* Direct Booking Action */}
+              <div className="mb-6">
                 <a
                   href={calUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="interactive flex items-center justify-between w-full px-5 py-3.5 rounded-xl bg-accent text-background font-mono text-xs font-bold uppercase tracking-wider hover:bg-accent/90 transition-all shadow-[0_0_20px_rgba(245,166,35,0.4)]"
+                  className="interactive flex items-center justify-between w-full px-5 py-4 rounded-xl bg-accent text-background font-mono text-xs font-bold uppercase tracking-wider hover:bg-accent/90 transition-all shadow-[0_0_20px_rgba(245,166,35,0.4)] transform hover:-translate-y-0.5"
                 >
                   <span className="flex items-center gap-2">
                     <Calendar size={16} />
                     Schedule via Google Calendar
-                  </span>
-                  <ExternalLink size={15} />
-                </a>
-
-                <a
-                  href="https://calendly.com/tanishqbhambri/15min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="interactive flex items-center justify-between w-full px-5 py-3.5 rounded-xl border border-white/15 bg-white/5 hover:border-accent/40 text-foreground hover:text-accent font-mono text-xs uppercase tracking-wider transition-all"
-                >
-                  <span className="flex items-center gap-2">
-                    <CheckCircle2 size={16} className="text-accent" />
-                    Alternative: Calendly Direct Slot
                   </span>
                   <ExternalLink size={15} />
                 </a>

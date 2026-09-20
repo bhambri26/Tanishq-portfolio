@@ -44,10 +44,7 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <h4 className="font-display text-2xl md:text-4xl font-bold uppercase tracking-tighter text-foreground mb-2 text-border mix-blend-difference">
-            "Let's turn raw data into real decisions."
-          </h4>
-          <p className="font-mono text-xs uppercase text-muted-foreground tracking-widest mt-4">
+          <p className="font-mono text-xs uppercase text-muted-foreground tracking-widest">
             © {new Date().getFullYear()} Tanishq Bhambri • AI Product Leader & Data Strategist
           </p>
         </motion.div>

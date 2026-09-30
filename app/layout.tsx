@@ -3,7 +3,6 @@ import { Outfit, Inter, Space_Grotesk } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import Cursor from '@/components/Cursor'
-import SideNav from '@/components/SideNav'
 import Header from '@/components/SmoothScroll'
 import { Analytics } from '@vercel/analytics/next'
 
@@ -158,7 +157,6 @@ export default function RootLayout({
         <div className="noise-overlay" />
         <Header />
         <Cursor />
-        <SideNav />
         <main className="relative z-10">
           {children}
         </main>

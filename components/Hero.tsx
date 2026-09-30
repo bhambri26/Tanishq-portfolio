@@ -19,7 +19,7 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
 
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative min-h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden">
       {/* Background Watermark */}
       <motion.div 
         style={{ y, opacity }}

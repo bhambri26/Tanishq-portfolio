@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import Hero from '@/components/Hero'
-import CanvasSequence from '@/components/CanvasSequence'
+import SkillMarquee from '@/components/CanvasSequence'
 import About from '@/components/About'
 import TechStack from '@/components/TechStack'
 import ProjectGrid from '@/components/ProjectGrid'
@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div className="bg-background min-h-screen text-foreground selection:bg-accent selection:text-background">
       <div id="hero"><Hero /></div>
-      <CanvasSequence />
+      <SkillMarquee />
       <div id="about"><About /></div>
       <div id="case-studies"><ArchitectureShowcase /></div>
       <div id="philosophy"><ProductPhilosophy /></div>

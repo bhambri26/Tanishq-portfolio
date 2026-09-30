@@ -89,11 +89,11 @@ export default function ProjectGrid() {
             <motion.div 
               key={i}
               variants={cardVar}
-              className={`group glass-card interactive p-8 md:p-12 flex flex-col transition-all duration-500 hover:-translate-y-2 hover:border-accent/40 ${project.span}`}
+              className={`group glass-card p-8 md:p-12 flex flex-col border border-white/10 ${project.span}`}
             >
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground group-hover:text-accent transition-colors duration-300">
+                  <h3 className="font-display text-2xl md:text-3xl font-bold uppercase text-foreground">
                     {project.title}
                   </h3>
                   <div className="flex items-center gap-3 mt-3">
@@ -106,7 +106,6 @@ export default function ProjectGrid() {
                     </span>
                   </div>
                 </div>
-                <ArrowUpRight className="text-muted-foreground group-hover:text-accent group-hover:rotate-12 transition-all duration-300 shrink-0" />
               </div>
 
               <div className="flex-1 mt-4">

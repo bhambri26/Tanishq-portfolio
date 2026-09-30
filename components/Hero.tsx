@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowDown, Linkedin, Github } from 'lucide-react'
+import { ArrowDown, Linkedin, Github, Mail } from 'lucide-react'
 import Image from 'next/image'
 
 const KEY_SKILLS = [
@@ -105,19 +105,26 @@ export default function Hero() {
               href="https://www.linkedin.com/in/tanishqbhambri" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="interactive flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-accent/10 hover:border-accent/30 transition-all text-foreground/70 hover:text-accent font-mono text-xs uppercase tracking-wider"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-accent/10 hover:border-accent/30 transition-all text-foreground/70 hover:text-accent"
+              aria-label="LinkedIn"
             >
-              <Linkedin size={14} />
-              LinkedIn
+              <Linkedin size={18} />
             </a>
             <a 
               href="https://github.com/bhambri26" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="interactive flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-accent/10 hover:border-accent/30 transition-all text-foreground/70 hover:text-accent font-mono text-xs uppercase tracking-wider"
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-accent/10 hover:border-accent/30 transition-all text-foreground/70 hover:text-accent"
+              aria-label="GitHub"
             >
-              <Github size={14} />
-              GitHub
+              <Github size={18} />
+            </a>
+            <a 
+              href="mailto:tanishqbhambri26@gmail.com" 
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-accent/10 hover:border-accent/30 transition-all text-foreground/70 hover:text-accent"
+              aria-label="Email"
+            >
+              <Mail size={18} />
             </a>
           </motion.div>
         </div>
@@ -130,16 +137,10 @@ export default function Hero() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
         >
           {/* Amber glow behind photo */}
-          <div className="absolute inset-0 rounded-2xl bg-accent/20 blur-2xl scale-110 pointer-events-none" />
-
-          {/* Decorative corner accents */}
-          <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-accent rounded-tl-lg" />
-          <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-accent rounded-tr-lg" />
-          <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-accent rounded-bl-lg" />
-          <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-accent rounded-br-lg" />
+          <div className="absolute inset-0 rounded-full bg-accent/20 blur-2xl scale-110 pointer-events-none" />
 
           {/* Photo */}
-          <div className="relative w-52 h-64 md:w-64 md:h-80 rounded-2xl overflow-hidden border border-white/10">
+          <div className="relative w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-white/10">
             <Image
               src="/tanishq.jpg"
               alt="Tanishq Bhambri"

@@ -152,55 +152,41 @@ export default function Timeline() {
           <div className="h-0.5 w-24 bg-accent mx-auto" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="flex flex-col gap-3">
           {certifications.map((item, index) => (
             <motion.a
               key={index}
               href={item.verifyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="glass-card p-6 md:p-8 flex flex-col justify-between hover:border-accent/40 transition-all group interactive cursor-none hover:-translate-y-1"
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] rounded-xl transition-all group"
             >
-              <div>
-                {/* Badge row */}
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <span className={`font-mono text-xs uppercase font-semibold px-3 py-1 rounded-full border ${item.badgeBg}`}>
-                    {item.badge}
-                  </span>
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-[10px] text-foreground/40 uppercase tracking-wider">
-                      {item.date}
-                    </span>
-                    <ExternalLink size={12} className="text-foreground/20 group-hover:text-accent transition-colors" />
-                  </div>
-                </div>
-
-                {/* Title with brand icon */}
-                <div className="flex items-start gap-3 mb-3">
-                  <div className="mt-0.5">{item.icon}</div>
-                  <h3 className="font-sans text-lg font-bold text-foreground group-hover:text-accent transition-colors leading-snug">
+              <div className="flex items-center gap-4">
+                <div className="mt-0.5 opacity-80 group-hover:opacity-100 transition-opacity">{item.icon}</div>
+                <div>
+                  <h3 className="font-sans text-sm md:text-base font-bold text-foreground group-hover:text-accent transition-colors leading-snug">
                     {item.title}
                   </h3>
+                  <div className="flex items-center gap-3 mt-1">
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-foreground/50">
+                      {item.organization}
+                    </span>
+                    <span className="font-mono text-[10px] text-foreground/30 uppercase tracking-wider">
+                      {item.date}
+                    </span>
+                  </div>
                 </div>
-                
-                <p className="font-mono text-xs uppercase tracking-wider text-foreground/40 mb-4 pl-8">
-                  {item.organization}
-                </p>
               </div>
-
-              <p className="font-sans text-sm text-foreground/55 leading-relaxed border-t border-white/5 pt-4 font-light pl-8">
-                {item.description}
-              </p>
-
-              {/* Verify badge link hint */}
-              <div className="mt-4 pl-8 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-accent">
-                  Verify Badge →
+              
+              <div className="flex items-center gap-4 ml-9 md:ml-0">
+                <span className={`font-mono text-[10px] uppercase font-bold px-2 py-0.5 rounded border ${item.badgeBg}`}>
+                  {item.badge}
                 </span>
+                <ExternalLink size={14} className="text-foreground/30 group-hover:text-accent transition-colors" />
               </div>
             </motion.a>
           ))}

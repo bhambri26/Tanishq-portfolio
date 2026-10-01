@@ -3,7 +3,6 @@ import { Outfit, Inter, Space_Grotesk } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import Cursor from '@/components/Cursor'
-import Header from '@/components/SmoothScroll'
 import { Analytics } from '@vercel/analytics/next'
 
 const outfit = Outfit({ 
@@ -155,7 +154,6 @@ export default function RootLayout({
           <div className="bg-blob bg-blob-4" />
         </div>
         <div className="noise-overlay" />
-        <Header />
         <Cursor />
         <main className="relative z-10">
           {children}

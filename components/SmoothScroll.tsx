@@ -7,7 +7,12 @@ import { Download, Calendar, Menu, X, ExternalLink, Clock, Video, CheckCircle2 }
 // Default Google Calendar appointment scheduling URL or fallback Google Calendar link
 const GOOGLE_CALENDAR_URL = "https://calendar.google.com/calendar/u/0/r"
 
-export default function Header() {
+interface HeaderProps {
+  onNavigate?: (section: string) => void;
+  activeSection?: string;
+}
+
+export default function Header({ onNavigate, activeSection = 'home' }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
@@ -33,6 +38,23 @@ export default function Header() {
     setIsEditingUrl(false)
   }
 
+  const handleNavClick = (e: React.MouseEvent, section: string) => {
+    e.preventDefault()
+    if (onNavigate) {
+      onNavigate(section)
+    }
+    setMobileMenuOpen(false)
+  }
+
+  const navItems = [
+    { id: 'about', label: 'About' },
+    { id: 'case-studies', label: 'Case Studies' },
+    { id: 'philosophy', label: 'Philosophy' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'certifications', label: 'Certifications' }
+  ]
+
   return (
     <>
       <header 
@@ -45,7 +67,8 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
           {/* Brand/Logo */}
           <a 
-            href="/" 
+            href="#" 
+            onClick={(e) => handleNavClick(e, 'home')}
             className="interactive group flex items-center gap-2 text-foreground hover:text-accent transition-colors"
           >
             <span className="font-display font-black text-xl tracking-tighter text-accent">TB</span>
@@ -56,12 +79,18 @@ export default function Header() {
 
           {/* Desktop Quick Nav */}
           <nav className="hidden md:flex items-center gap-6">
-            <a href="/portfolio#about" className="font-mono text-xs uppercase tracking-wider text-foreground/70 hover:text-accent transition-colors">About</a>
-            <a href="/portfolio#case-studies" className="font-mono text-xs uppercase tracking-wider text-foreground/70 hover:text-accent transition-colors">Case Studies</a>
-            <a href="/portfolio#philosophy" className="font-mono text-xs uppercase tracking-wider text-foreground/70 hover:text-accent transition-colors">Philosophy</a>
-            <a href="/portfolio#skills" className="font-mono text-xs uppercase tracking-wider text-foreground/70 hover:text-accent transition-colors">Skills</a>
-            <a href="/portfolio#projects" className="font-mono text-xs uppercase tracking-wider text-foreground/70 hover:text-accent transition-colors">Projects</a>
-            <a href="/portfolio#certifications" className="font-mono text-xs uppercase tracking-wider text-foreground/70 hover:text-accent transition-colors">Certifications</a>
+            {navItems.map(item => (
+              <a 
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleNavClick(e, item.id)}
+                className={`font-mono text-xs uppercase tracking-wider transition-colors ${
+                  activeSection === item.id ? 'text-accent font-bold' : 'text-foreground/70 hover:text-accent'
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
 
           {/* TOP TOOLBAR: The ONLY place for Download Resume & Book 15-Min Chat */}
@@ -123,48 +152,18 @@ export default function Header() {
             exit={{ opacity: 0, y: -10 }}
             className="sm:hidden bg-background/95 backdrop-blur-xl border-b border-white/10 px-6 py-5 flex flex-col gap-4"
           >
-            <a 
-              href="/portfolio#about" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="font-mono text-sm uppercase text-foreground/80 hover:text-accent"
-            >
-              About
-            </a>
-            <a 
-              href="/portfolio#case-studies" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="font-mono text-sm uppercase text-foreground/80 hover:text-accent"
-            >
-              Case Studies & Architecture
-            </a>
-            <a 
-              href="/portfolio#philosophy" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="font-mono text-sm uppercase text-foreground/80 hover:text-accent"
-            >
-              Product Philosophy
-            </a>
-            <a 
-              href="/portfolio#skills" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="font-mono text-sm uppercase text-foreground/80 hover:text-accent"
-            >
-              Skills
-            </a>
-            <a 
-              href="/portfolio#projects" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="font-mono text-sm uppercase text-foreground/80 hover:text-accent"
-            >
-              Projects
-            </a>
-            <a 
-              href="/portfolio#certifications" 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="font-mono text-sm uppercase text-foreground/80 hover:text-accent"
-            >
-              Certifications
-            </a>
+            {navItems.map(item => (
+              <a 
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleNavClick(e, item.id)}
+                className={`font-mono text-sm uppercase transition-colors ${
+                  activeSection === item.id ? 'text-accent font-bold' : 'text-foreground/80 hover:text-accent'
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
             <div className="pt-2 border-t border-white/10 flex flex-col gap-2">
               <a
                 href="/resume.pdf"

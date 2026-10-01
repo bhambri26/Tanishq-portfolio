@@ -1,34 +1,111 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import Header from '@/components/SmoothScroll'
 import Hero from '@/components/Hero'
 import SkillMarquee from '@/components/CanvasSequence'
+import About from '@/components/About'
+import TechStack from '@/components/TechStack'
+import ProjectGrid from '@/components/ProjectGrid'
+import Timeline, { ArchitectureShowcase, ProductPhilosophy } from '@/components/Timeline'
+import Education from '@/components/Education'
 import Footer from '@/components/Footer'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+
+type Section = 'home' | 'about' | 'case-studies' | 'philosophy' | 'skills' | 'projects' | 'certifications'
+
+const sectionVariants = {
+  enter: { opacity: 0, y: 20 },
+  center: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } },
+  exit: { opacity: 0, y: -12, transition: { duration: 0.2, ease: 'easeIn' } }
+}
+
+function SectionContent({ section }: { section: Section }) {
+  switch (section) {
+    case 'home':
+      return (
+        <>
+          <div id="hero"><Hero /></div>
+          <SkillMarquee />
+          <Footer />
+        </>
+      )
+    case 'about':
+      return (
+        <>
+          <div id="about" className="pt-24"><About /></div>
+          <Footer />
+        </>
+      )
+    case 'case-studies':
+      return (
+        <>
+          <div id="case-studies" className="pt-24"><ArchitectureShowcase /></div>
+          <Footer />
+        </>
+      )
+    case 'philosophy':
+      return (
+        <>
+          <div id="philosophy" className="pt-24"><ProductPhilosophy /></div>
+          <Footer />
+        </>
+      )
+    case 'skills':
+      return (
+        <>
+          <div id="skills" className="pt-24"><TechStack /></div>
+          <Footer />
+        </>
+      )
+    case 'projects':
+      return (
+        <>
+          <div id="projects" className="pt-24"><ProjectGrid /></div>
+          <Footer />
+        </>
+      )
+    case 'certifications':
+      return (
+        <>
+          <div id="certifications" className="pt-24"><Timeline /></div>
+          <div id="education"><Education /></div>
+          <Footer />
+        </>
+      )
+    default:
+      return null
+  }
+}
 
 export default function Home() {
-  // Enforce scroll to top on reload for best experience with scroll animations
-  useEffect(() => {
-    window.scrollTo(0, 0)
+  const [activeSection, setActiveSection] = useState<Section>('home')
+
+  const handleNavigate = useCallback((section: string) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    setActiveSection(section as Section)
   }, [])
 
-  return (
-    <div className="bg-background min-h-screen text-foreground selection:bg-accent selection:text-background flex flex-col">
-      <div id="hero" className="flex-grow"><Hero /></div>
-      <SkillMarquee />
-      
-      <div className="py-24 flex justify-center items-center relative z-10 bg-background">
-        <Link 
-          href="/portfolio" 
-          className="interactive group flex items-center gap-3 px-8 py-4 bg-accent text-background font-mono font-bold uppercase tracking-widest text-sm rounded-full shadow-[0_0_30px_rgba(245,166,35,0.4)] hover:shadow-[0_0_50px_rgba(245,166,35,0.6)] transition-all transform hover:-translate-y-1"
-        >
-          View Full Portfolio
-          <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </div>
+  // Scroll to top whenever section changes
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [activeSection])
 
-      <Footer />
+  return (
+    <div className="bg-background min-h-screen text-foreground selection:bg-accent selection:text-background">
+      <Header onNavigate={handleNavigate} activeSection={activeSection} />
+
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={activeSection}
+          variants={sectionVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+        >
+          <SectionContent section={activeSection} />
+        </motion.div>
+      </AnimatePresence>
     </div>
   )
 }

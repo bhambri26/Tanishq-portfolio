@@ -144,6 +144,75 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+
+        {/* ─── Security: Block DevTools / Right-Click / Copy ─── */}
+        <Script
+          id="security-guard"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                // Block right-click context menu
+                document.addEventListener('contextmenu', function(e) {
+                  e.preventDefault();
+                  return false;
+                });
+
+                // Block keyboard shortcuts for DevTools / View Source / Save / Copy
+                document.addEventListener('keydown', function(e) {
+                  var key = e.key || e.keyCode;
+                  var ctrl = e.ctrlKey || e.metaKey;
+
+                  // F12 - DevTools
+                  if (key === 'F12' || key === 123) { e.preventDefault(); return false; }
+
+                  // Ctrl+U - View Source
+                  if (ctrl && (key === 'u' || key === 'U' || key === 85)) { e.preventDefault(); return false; }
+
+                  // Ctrl+S - Save
+                  if (ctrl && (key === 's' || key === 'S' || key === 83)) { e.preventDefault(); return false; }
+
+                  // Ctrl+Shift+I - DevTools
+                  if (ctrl && e.shiftKey && (key === 'i' || key === 'I' || key === 73)) { e.preventDefault(); return false; }
+
+                  // Ctrl+Shift+J - Console
+                  if (ctrl && e.shiftKey && (key === 'j' || key === 'J' || key === 74)) { e.preventDefault(); return false; }
+
+                  // Ctrl+Shift+C - Element Picker
+                  if (ctrl && e.shiftKey && (key === 'c' || key === 'C' || key === 67)) { e.preventDefault(); return false; }
+
+                  // Ctrl+A - Select All
+                  if (ctrl && (key === 'a' || key === 'A' || key === 65)) { e.preventDefault(); return false; }
+
+                  // Ctrl+C - Copy
+                  if (ctrl && (key === 'c' || key === 'C')) { e.preventDefault(); return false; }
+
+                  // Ctrl+P - Print
+                  if (ctrl && (key === 'p' || key === 'P' || key === 80)) { e.preventDefault(); return false; }
+                });
+
+                // Block drag on all elements
+                document.addEventListener('dragstart', function(e) {
+                  e.preventDefault();
+                  return false;
+                });
+
+                // Detect DevTools open via size diff (desktop only)
+                var devtools = { open: false };
+                var threshold = 160;
+                setInterval(function() {
+                  if (window.outerWidth - window.innerWidth > threshold ||
+                      window.outerHeight - window.innerHeight > threshold) {
+                    if (!devtools.open) {
+                      devtools.open = true;
+                      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#0a0a0a;color:#f5a623;font-family:monospace;font-size:1.2rem;text-align:center;padding:2rem;">⚠️ Unauthorized access attempt detected.<br/>This site is protected.</div>';
+                    }
+                  }
+                }, 500);
+              })();
+            `
+          }}
+        />
       </head>
       <body className={`${outfit.variable} ${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background text-foreground`}>
         {/* Animated gradient background */}

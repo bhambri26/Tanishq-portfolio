@@ -1,27 +1,43 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowDown, Linkedin, Github, Mail } from 'lucide-react'
+import { Linkedin, Github, Mail, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 
-const KEY_SKILLS = [
-  "Palantir Foundry (AIP)",
-  "GenAI & RAG Architecture",
-  "CSPO® Product Strategy",
-  "Data Analytics & ML Pipelines",
-  "Azure DevOps Agile"
+// PM + Data + AI skills that scroll in the marquee
+const MARQUEE_SKILLS = [
+  "PALANTIR AIP",
+  "PRODUCT STRATEGY",
+  "CSPO®",
+  "SQL",
+  "GENAI & RAG",
+  "PYTHON",
+  "MOSCOW PRIORITISATION",
+  "ROADMAPPING",
+  "SCRUM",
+  "MACHINE LEARNING",
+  "AZURE DEVOPS",
+  "OKRs",
+  "USER STORY MAPPING",
+  "POWER BI",
+  "SPRINT PLANNING",
+  "DATA ANALYTICS",
+  "LLM ENGINEERING",
+  "A/B TESTING",
 ]
+
+// Double the list so we have enough for seamless infinite scroll
+const TRACK = [...MARQUEE_SKILLS, ...MARQUEE_SKILLS]
 
 export default function Hero() {
   const { scrollYProgress } = useScroll()
-  
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"])
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
 
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden">
       {/* Background Watermark */}
-      <motion.div 
+      <motion.div
         style={{ y, opacity }}
         className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
       >
@@ -31,14 +47,14 @@ export default function Hero() {
       </motion.div>
 
       {/* Main Content — two-column layout */}
-      <div className="z-10 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20 px-6 w-full max-w-6xl">
+      <div className="z-10 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20 px-6 w-full max-w-6xl pt-20 pb-6">
 
         {/* LEFT — Text */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1">
           {/* Name */}
           <h1 className="font-display text-5xl md:text-7xl lg:text-[7rem] font-black uppercase tracking-[-0.04em] leading-[0.9] mb-4">
             <span className="overflow-hidden block">
-              <motion.span 
+              <motion.span
                 className="block"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
@@ -48,7 +64,7 @@ export default function Hero() {
               </motion.span>
             </span>
             <span className="overflow-hidden block">
-              <motion.span 
+              <motion.span
                 className="block text-accent"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
@@ -70,57 +86,40 @@ export default function Hero() {
           </motion.p>
 
           {/* Thin divider */}
-          <motion.div 
+          <motion.div
             className="w-16 h-px bg-accent mb-5"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           />
 
-          {/* Key skills badges */}
-          <motion.div 
-            className="flex flex-wrap justify-center lg:justify-start gap-2 max-w-xl mb-6"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          >
-            {KEY_SKILLS.map((skill, index) => (
-              <span 
-                key={index}
-                className="font-mono text-xs text-accent/90 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full uppercase tracking-wider"
-              >
-                {skill}
-              </span>
-            ))}
-          </motion.div>
-
-          {/* Social links */}
+          {/* Social links — icons only */}
           <motion.div
             className="flex items-center gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <a 
-              href="https://www.linkedin.com/in/tanishqbhambri" 
-              target="_blank" 
+            <a
+              href="https://www.linkedin.com/in/tanishqbhambri"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-accent/10 hover:border-accent/30 transition-all text-foreground/70 hover:text-accent"
               aria-label="LinkedIn"
             >
               <Linkedin size={18} />
             </a>
-            <a 
-              href="https://github.com/bhambri26" 
-              target="_blank" 
+            <a
+              href="https://github.com/bhambri26"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-accent/10 hover:border-accent/30 transition-all text-foreground/70 hover:text-accent"
               aria-label="GitHub"
             >
               <Github size={18} />
             </a>
-            <a 
-              href="mailto:tanishqbhambri26@gmail.com" 
+            <a
+              href="mailto:tanishqbhambri26@gmail.com"
               className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-accent/10 hover:border-accent/30 transition-all text-foreground/70 hover:text-accent"
               aria-label="Email"
             >
@@ -148,11 +147,10 @@ export default function Hero() {
               className="object-cover object-top"
               priority
             />
-            {/* Subtle amber gradient overlay at bottom */}
             <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background/60 to-transparent pointer-events-none" />
           </div>
 
-          {/* Experience badge floating bottom-right */}
+          {/* Experience badge */}
           <motion.div
             className="absolute -bottom-4 -right-4 bg-accent text-background font-mono text-xs font-bold px-3 py-2 rounded-xl shadow-lg"
             initial={{ opacity: 0, scale: 0 }}
@@ -164,22 +162,49 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
+      {/* ─── Skill Marquee — integrated at the bottom of Hero ─── */}
+      <motion.div
+        className="w-full z-10 mt-auto overflow-hidden border-t border-white/5 bg-black/20 backdrop-blur-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
+        transition={{ delay: 1.0, duration: 0.8 }}
       >
-        <span className="font-mono text-[10px] uppercase text-foreground/30 tracking-[0.3em] mb-3">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        >
-          <ArrowDown size={16} className="text-accent/60" />
-        </motion.div>
+        {/* Top track — left to right */}
+        <div className="relative flex overflow-hidden py-3">
+          <motion.div
+            className="flex whitespace-nowrap gap-8 items-center"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+          >
+            {TRACK.map((skill, i) => (
+              <div key={i} className="flex items-center gap-8 shrink-0">
+                <span className="font-display font-black text-xl md:text-2xl text-foreground/15 hover:text-accent/70 transition-colors duration-300 tracking-wider uppercase">
+                  {skill}
+                </span>
+                <Sparkles className="text-accent/30 w-3 h-3" />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Bottom track — right to left */}
+        <div className="relative flex overflow-hidden pb-3 border-t border-white/5">
+          <motion.div
+            className="flex whitespace-nowrap gap-8 items-center"
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 38 }}
+          >
+            {[...TRACK].reverse().map((skill, i) => (
+              <div key={i} className="flex items-center gap-8 shrink-0">
+                <span className="font-display font-bold text-lg md:text-xl text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.12)] hover:[-webkit-text-stroke:1px_rgba(245,166,35,0.6)] transition-all duration-300 tracking-widest uppercase">
+                  {skill}
+                </span>
+                <div className="w-1.5 h-1.5 rounded-full bg-accent/30 shrink-0" />
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   )
 }
-

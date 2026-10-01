@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Header from '@/components/SmoothScroll'
 import Hero from '@/components/Hero'
-import SkillMarquee from '@/components/CanvasSequence'
 import About from '@/components/About'
 import TechStack from '@/components/TechStack'
 import ProjectGrid from '@/components/ProjectGrid'
@@ -12,7 +11,7 @@ import Timeline, { ArchitectureShowcase, ProductPhilosophy } from '@/components/
 import Education from '@/components/Education'
 import Footer from '@/components/Footer'
 
-type Section = 'home' | 'about' | 'case-studies' | 'philosophy' | 'skills' | 'projects' | 'certifications'
+type Section = 'home' | 'about' | 'case-studies' | 'philosophy' | 'skills' | 'projects' | 'certifications' | 'education'
 
 const sectionVariants = {
   enter: { opacity: 0, y: 20 },
@@ -26,7 +25,6 @@ function SectionContent({ section }: { section: Section }) {
       return (
         <>
           <div id="hero"><Hero /></div>
-          <SkillMarquee />
           <Footer />
         </>
       )
@@ -69,7 +67,13 @@ function SectionContent({ section }: { section: Section }) {
       return (
         <>
           <div id="certifications" className="pt-24"><Timeline /></div>
-          <div id="education"><Education /></div>
+          <Footer />
+        </>
+      )
+    case 'education':
+      return (
+        <>
+          <div id="education" className="pt-24"><Education /></div>
           <Footer />
         </>
       )

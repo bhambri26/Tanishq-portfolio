@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Security: Disable Copy / Select / Drag / Print ────────────────── */
+
+/* Block text selection globally (allow on inputs/textareas) */
+*, *::before, *::after {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Re-enable for actual form inputs so usability is preserved */
+input, textarea, [contenteditable] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+
+/* Disable image dragging */
+img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+/* Hide content from print */
+@media print {
+  body { display: none !important; }
+}
+
+/* Prevent right-click highlight overlay on some browsers */
+::selection {
+  background: transparent;
+  color: inherit;
+}
+
 /* ─── Animated Background Blobs ─────────────────────────────────────── */
 
 @keyframes blobDrift1 {

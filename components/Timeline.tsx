@@ -81,7 +81,7 @@ const certifications = [
     badgeBg: 'bg-[#76B900]/10 text-[#76B900] border-[#76B900]/30',
     description: 'GPU-accelerated Data Science, RAPIDS, Feature Engineering & High-Performance Machine Learning Pipelines.',
     icon: <NvidiaIcon />,
-    verifyUrl: 'https://learn.nvidia.com/certificates'
+    verifyUrl: 'https://www.credly.com/users/tanishq-bhambri'
   },
   {
     title: 'Databricks Certified Generative AI Engineer Associate',
@@ -91,7 +91,7 @@ const certifications = [
     badgeBg: 'bg-[#FF3621]/10 text-[#FF3621] border-[#FF3621]/30',
     description: 'Designing & Deploying Enterprise GenAI Applications, RAG Pipelines, Vector Search & Unity Catalog Data Governance.',
     icon: <DatabricksIcon />,
-    verifyUrl: 'https://credentials.databricks.com/'
+    verifyUrl: 'https://credentials.databricks.com/profile/tanishqbhambri'
   },
   {
     title: 'Generative AI with Large Language Models',
@@ -101,7 +101,7 @@ const certifications = [
     badgeBg: 'bg-[#F77A1A]/10 text-[#F77A1A] border-[#F77A1A]/30',
     description: 'Transformer Architectures, LLM Fine-tuning (PEFT, LoRA), Prompt Engineering & Reinforcement Learning from Human Feedback (RLHF).',
     icon: <DeepLearningAIIcon />,
-    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/'
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/GENERATIVE-AI-LLM'
   },
   {
     title: 'Generative AI and Prompt Engineering (ChatGPT, DALL-E)',
@@ -111,7 +111,7 @@ const certifications = [
     badgeBg: 'bg-[#0056D2]/10 text-[#0056D2] border-[#0056D2]/30',
     description: 'Advanced Prompt Strategies, Multimodal Content Generation & Applied Enterprise GenAI Workflows.',
     icon: <CourseraIcon />,
-    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/'
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/PROMPT-ENG-CHATGPT'
   },
   {
     title: 'IELTS General Training — Band 7.5 (C1 Proficient)',

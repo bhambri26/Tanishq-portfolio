@@ -52,7 +52,8 @@ export default function Header({ onNavigate, activeSection = 'home' }: HeaderPro
     { id: 'philosophy', label: 'Philosophy' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
-    { id: 'certifications', label: 'Certifications' }
+    { id: 'certifications', label: 'Certifications' },
+    { id: 'education', label: 'Education' }
   ]
 
   return (

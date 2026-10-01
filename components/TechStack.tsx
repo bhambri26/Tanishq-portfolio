@@ -33,6 +33,7 @@ const categories = [
     icon: <Target size={20} className="text-accent mr-3 shrink-0" />,
     items: [
       'Certified Scrum Product Owner (CSPO)',
+      'MoSCoW Prioritisation',
       'Product Roadmap & OKRs',
       'User Story Mapping & Backlog',
       'Go-to-Market Strategy',
